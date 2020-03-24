@@ -1,0 +1,37 @@
+<div class="container">
+
+  <div class="jumbotron">
+    <h3>Por favor, ingresa la información</h3>
+    <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <label for="">Selecciona la ciudad de origen</label>
+        <select class="form-control select-sitios" name="repeatSelect" id="repeatSelectOrigen" ng-model="ciudadOrigen.model" required>
+          <option ng-repeat="sitio in sitios" value="{{sitio.id}}">{{sitio.ciudad}}</option>
+        </select>
+        <label for="">Selecciona la ciudad de Destino</label>
+        <select class="form-control select-sitios" name="repeatSelect" id="repeatSelectDestino" ng-model="ciudadDestino.model" required>
+          <option ng-repeat="sitio in sitios" value="{{sitio.id}}">{{sitio.ciudad}}</option>
+        </select>
+        {{ pasajes }}
+
+        <div class='col-sm-12'>
+          <label for="">Selecciona la fecha de viaje</label>
+            <!-- <input type='text' class="form-control" name=fecha id='datetimepicker3' ng-model="myDate" ng-focus="myDate=fecha"/> -->
+            <input type="date" class="form-control" id="start" name="trip-start" ng-model="myDate" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                  format: 'L',
+                  icons: {
+                    date: "fa fa-calendar",
+                }
+                });
+            });
+        </script>
+        <button ng-click="buscarPasajes(myDate, ciudadOrigen.model, ciudadDestino.model)" type="submit" class="btn-sitio btn btn-primary btn-lg">Buscar Pasajes!</button>
+      </div>
+    </form>
+  </div>
+
+</div>

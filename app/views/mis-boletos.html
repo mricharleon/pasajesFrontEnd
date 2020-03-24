@@ -1,0 +1,11 @@
+<h3>Lista de mis boletos</h3>
+
+<div class="panel panel-default" ng-repeat="boleto in misBoletos.boletos">
+  <div class="panel-heading">{{ boleto.pasaje.origen.ciudad }} - {{ boleto.pasaje.destino.ciudad }} ({{ boleto.pasaje.unidad.cooperativa.nombre }})</div>
+
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Salida:</strong> {{ boleto.pasaje.origen.terminal }} - {{ boleto.pasaje.salida | date : "medium" : timezone }}</li>
+    <li class="list-group-item"><strong>Llegada:</strong> {{ boleto.pasaje.destino.terminal }} - {{ boleto.pasaje.llegada | date : "medium" : timezone }}</li>
+    <li class="list-group-item"><strong>Precio:</strong> ${{ boleto.pasaje.precio }}</li>
+  </ul>
+</div>
