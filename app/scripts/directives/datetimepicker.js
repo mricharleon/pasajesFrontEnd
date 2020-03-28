@@ -37,7 +37,8 @@ angular
 
         function leer() {
           // Recupera y formatea la fecha del input
-          var value = new Date( element.find('input').val() );
+          var value = element.find('input').val();
+          value = $filter('date')(new Date(value), "yyyy-MM-ddTHH:mm");
           // Asigna el valor del input al ngModel
           ngModel.$setViewValue(value);
         }

@@ -16,7 +16,8 @@ angular
     var service = {
       getAllPasajes: getAllPasajes,
       getPasajes: getPasajes,
-      getPasaje: getPasaje
+      getPasaje: getPasaje,
+      editPasaje: editPasaje,
     };
 
     return service;
@@ -52,6 +53,22 @@ angular
       return $http({
         method: 'GET',
         url: 'http://localhost:1234/' + '/api/pasaje/' + pasajeId
+      }).then(function success(res) {
+        return res.data // jshint ignore:line
+      }, function error(res) {
+        return $q.reject(res.data);
+      });
+    }
+
+    // Crea el pasaje
+    function editPasaje(data) {
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:1234/' + '/api/pasaje/edit/' + data.id,
+        // headers: {
+        //   'Content-Type': 'application/json;charset=UTF-8'
+        // },
+        data: data,
       }).then(function success(res) {
         return res.data // jshint ignore:line
       }, function error(res) {
