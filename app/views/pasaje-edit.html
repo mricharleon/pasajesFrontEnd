@@ -1,0 +1,63 @@
+<div class="container">
+
+  <div class="jumbotron">
+    <h3>Por favor, edita la información</h3>
+
+    <form class="navbar-form navbar-left" name="pasajeForm" ng-submit="pasajeEditVm.guardarPasajeEditado()" novalidate>
+
+      <div class="form-group">
+
+        <div class="row">
+          <div class='col-sm-6'><label for="">Fecha de salida</label>
+              <div class="form-group">
+                  <div class='input-group date' datetimepicker ng-model="pasajeEditVm.pasaje.salida">
+                      <input type='text' class="form-control"  />
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                  </div>
+              </div>
+          </div>
+
+          <div class='col-sm-6'>
+            <div class="form-group"><label for="">Fecha de llegada</label>
+                <div class='input-group date' datetimepicker ng-model="pasajeEditVm.pasaje.llegada">
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group" ng-class="{'form-group has-error has-feedback': pasajeForm.precio.$touched && pasajeForm.precio.$invalid}">
+          <label for="precio">Precio</label>
+          <input class="form-control select-sitios" id="precio" name="precio" type="number" ng-required="true" step="0.01" ng-model="pasajeEditVm.pasaje.precio">
+          <span class="spans-has-error" ng-show="pasajeForm.precio.$error.required">Ingresa el precio del boleto.</span>
+        </div>
+
+        <div class="form-group" ng-class="{'form-group has-error has-feedback': pasajeForm.asientDisp.$touched && pasajeForm.asientDisp.$invalid}">
+          <label for="asientDisp" class="">Asientos disponibles ({{ a = pasajeEditVm.pasaje.asientos_disponibles }})</label>
+          <input type="number" id="asientDisp" name="asientDisp" class="form-control select-sitios" ng-required="true" ng-model="pasajeEditVm.pasaje.asientos_disponibles">
+          <span class="spans-has-error" ng-show="pasajeForm.asientDisp.$error.required">Ingresa el numero de asientos disponibles.</span>
+        </div>
+
+        <label for="">Selecciona la ciudad de origen</label>
+        <select class="form-control select-sitios" ng-model="pasajeEditVm.pasaje.origen" ng-options="sitio.ciudad for sitio in pasajeEditVm.sitios track by sitio.id" required>
+        </select>
+
+        <label for="">Selecciona la ciudad de destino</label>
+        <select class="form-control select-sitios" ng-model="pasajeEditVm.pasaje.destino" ng-options="sitio.ciudad for sitio in pasajeEditVm.sitios track by sitio.id" required>
+        </select>
+
+        <label for="">Selecciona la unidad</label>
+        <select class="form-control select-sitios" ng-model="pasajeEditVm.pasaje.unidad" ng-options="(unidad.cooperativa.nombre + ' (Bus #' + unidad.numero_unidad + ' - ' + unidad.clase.nombre + ')' ) for unidad in pasajeEditVm.unidades track by unidad.id" required>
+        </select>
+
+        <button type="submit" ng-disabled="pasajeForm.$invalid" class="btn-sitio btn btn-primary btn-lg">Guardar Pasaje</button>
+      </div>
+    </form>
+
+  </div>
