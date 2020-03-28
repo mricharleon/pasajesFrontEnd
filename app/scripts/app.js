@@ -22,14 +22,29 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/pasaje.html',
+        controller: 'PasajeCtrl',
+        controllerAs: 'pasajeVm'
+      })
+      .when('/crear-boleto', {
+        templateUrl: 'views/boleto-add.html',
+        controller: 'BoletoAddCtrl',
+        controllerAs: 'boletoAddVm'
       })
       .when('/mis-boletos', {
-        templateUrl: 'views/mis-boletos.html',
-        controller: 'MisBoletosCtrl',
-        controllerAs: 'misBoletos'
+        templateUrl: 'views/boleto-list.html',
+        controller: 'boletoListCtrl',
+        controllerAs: 'boletoListVm'
+      })
+      .when('/list-pasajes', {
+        templateUrl: 'views/pasaje-list.html',
+        controller: 'PasajeListCtrl',
+        controllerAs: 'pasajeListVm'
+      })
+      .when('/edit-pasaje', {
+        templateUrl: 'views/pasaje-edit.html',
+        controller: 'PasajeEditCtrl',
+        controllerAs: 'pasajeEditVm'
       })
       .otherwise({
         redirectTo: '/'

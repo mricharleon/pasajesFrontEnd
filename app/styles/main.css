@@ -43,9 +43,9 @@ body {
 
 /* Main marketing message and sign up button */
 .jumbotron {
+  display: grid;
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  height: 425px;
   margin-top: 50px;
   width: 650px !important;
 }
@@ -72,7 +72,36 @@ body {
 .btn-sitio{
   margin-top: 20px;
 }
-
+.table-hover tbody th{
+  font-weight: normal;
+}
+.left{
+  text-align: left;
+}
+.center-text{
+  text-align: center;
+}
+.panel{
+  border: none;
+}
+input[type="date"].form-control,
+input[type="time"].form-control{
+  display: block;
+  line-height: 15px;
+}
+.btn-panel-pasajes{
+  margin-top: -4px;
+  margin-left: 5px;
+  float: right;
+}
+.body-personalizado{
+  margin-top: 55px;
+}
+.spans-has-error{
+  float: left;
+  margin-top: -10px;
+  color: #a94442;
+}
 
 
 
@@ -100,5 +129,13 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+
+  /* Personalizados */
+  panel .col-sm-3{
+    width: 50%;
   }
 }

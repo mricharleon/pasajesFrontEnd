@@ -1,0 +1,19 @@
+<h3 class="center-text">Lista de pasajes</h3>
+
+<div class="panel panel-primary col-xs-6 col-sm-6" ng-repeat="pasaje in pasajeListVm.pasajes">
+  <div class="panel-heading">
+    {{ pasaje.origen.ciudad }} - {{ pasaje.destino.ciudad }} ({{ pasaje.unidad.cooperativa.nombre }})
+    <!-- <button type="button" class="btn btn-default">Editar</button> -->
+    <span class="btn btn-danger btn-sm btn-panel-pasajes">Eliminar</span>
+    <span class="btn btn-default btn-sm btn-panel-pasajes" ng-click="pasajeListVm.editarPasaje(pasaje.id)">Editar</span>
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Salida:</strong> {{ pasaje.origen.terminal }} - {{ pasaje.salida | date : "medium" : timezone }}</li>
+    <li class="list-group-item"><strong>Llegada:</strong> {{ pasaje.destino.terminal }} - {{ pasaje.llegada | date : "medium" : timezone }}</li>
+    <li class="list-group-item"><strong>Asientos de la Unidad:</strong> {{ pasaje.unidad.numero_asientos }} Asientos</li>
+    <li class="list-group-item"><strong>Asientos disponibles:</strong> {{ pasaje.asientos_disponibles }} Asientos</li>
+    <li class="list-group-item"><strong>Tipo:</strong> {{ pasaje.unidad.clase.nombre }} ({{ pasaje.unidad.clase.descripcion }})</li>
+    <li class="list-group-item"><strong>Precio de boleto:</strong> ${{ pasaje.precio }}</li>
+  </ul>
+</div>

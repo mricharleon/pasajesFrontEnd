@@ -1,0 +1,46 @@
+<div class="container">
+
+  <div class="jumbotron">
+    <h3  ng-if="boletoAddVm.pasaje.asientos_disponibles">Por favor, completa tu compra de boletos</h3>
+    <h3  ng-if="!boletoAddVm.pasaje.asientos_disponibles">Boletos agotados en esta ruta!</h3>
+
+    <div class="left">
+      <h5>
+        <strong>Ruta: </strong>
+        {{ boletoAddVm.pasaje.origen.ciudad }} ({{ boletoAddVm.pasaje.origen.terminal }}) -
+        {{ boletoAddVm.pasaje.destino.ciudad }} ({{ boletoAddVm.pasaje.destino.terminal }})
+      </h5>
+      <h5>
+        <strong>Horario: </strong>
+        {{ boletoAddVm.pasaje.salida | date:'medium' }} - {{ boletoAddVm.pasaje.llegada | date:'medium' }}
+      </h5>
+      <h5>
+        <strong>Cooperativa: </strong>
+        {{ boletoAddVm.pasaje.unidad.cooperativa.nombre }}
+      </h5>
+      <h5>
+        <strong>Tipo Unidad: </strong>
+        {{ boletoAddVm.pasaje.unidad.clase.nombre }}
+      </h5>
+      <h5>
+        <strong>Precio boleto: </strong>
+        ${{ boletoAddVm.pasaje.precio }}
+      </h5>
+      <h5 ng-if="numeroAsientos.model">
+        <strong>Precio Total: </strong>
+        ${{ boletoAddVm.pasaje.precio * numeroAsientos.model}}
+      </h5>
+    </div>
+
+    <form class="navbar-form navbar-left" ng-show="boletoAddVm.pasaje.asientos_disponibles" name="boletoForm" novalidate>
+      <div class="form-group" ng-class="{'form-group has-error has-feedback': boletoForm.repeatSelectOrigen.$touched && boletoForm.repeatSelectOrigen.$invalid}">
+        <label for="repeatSelectOrigen">Selecciona el número de asientos ({{ boletoAddVm.pasaje.asientos_disponibles }} disponibles!)</label>
+        <select class="form-control select-sitios" id="repeatSelectOrigen" name="repeatSelectOrigen" ng-model="numeroAsientos.model" required>
+          <option value="{{ $index + 1 }}" ng-repeat="n in [].constructor(boletoAddVm.pasaje.asientos_disponibles) track by $index">{{ $index + 1 }}</option>
+        </select>
+        <span class="spans-has-error" ng-show="boletoForm.repeatSelectOrigen.$error.required">Ingresa la cantidad de pasajes.</span>
+      </div>
+      <button ng-disabled="boletoForm.$invalid" ng-click="boletoAddVm.crearBoleto(numeroAsientos.model, boletoAddVm.pasaje.precio * numeroAsientos.model)" type="submit" class="btn-sitio btn btn-primary btn-lg">Comprar Ahora!</button>
+    </form>
+
+  </div>

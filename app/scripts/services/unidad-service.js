@@ -2,28 +2,28 @@
 
 /**
  * @ngdoc service
- * @name appApp.sitioService
+ * @name appApp.unidadService
  * @description
- * # sitioService
+ * # unidadService
  * Service in the appApp.
  */
 angular
   .module('appApp')
-  .service('sitioService', sitioService);
+  .service('unidadService', unidadService);
 
-  function sitioService($http){
+  function unidadService($http){
 
     var service = {
-      getSitios: getSitios,
+      getUnidades: getUnidades,
     };
 
     return service;
 
-    // Obtiene todos los sitios
-    function getSitios() {
+    // Obtiene todos las unidades
+    function getUnidades() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:1234/' + '/api/sitios'
+        url: 'http://localhost:1234/' + '/api/unidades'
       }).then(function success(res) {
         return res.data // jshint ignore:line
       }, function error(res) {
