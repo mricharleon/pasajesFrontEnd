@@ -3,7 +3,6 @@
 <div class="panel panel-primary col-xs-6 col-sm-6" ng-repeat="pasaje in pasajeListVm.pasajes">
   <div class="panel-heading">
     {{ pasaje.origen.ciudad }} - {{ pasaje.destino.ciudad }} ({{ pasaje.unidad.cooperativa.nombre }})
-    <!-- <button type="button" class="btn btn-default">Editar</button> -->
     <span class="btn btn-danger btn-sm btn-panel-pasajes">Eliminar</span>
     <span class="btn btn-default btn-sm btn-panel-pasajes" ng-click="pasajeListVm.editarPasaje(pasaje.id)">Editar</span>
   </div>

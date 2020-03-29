@@ -17,6 +17,7 @@ angular
     var service = {
       getBoletos: getBoletos,
       addBoleto: addBoleto,
+      delBoleto: delBoleto,
     };
 
     return service;
@@ -38,8 +39,24 @@ angular
     function addBoleto(data) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:1234/' + '/api/boleto2',
+        url: 'http://localhost:1234/' + '/api/boletos',
         data: data,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(function success(res) {
+        return res.data // jshint ignore:line
+      }, function error(res) {
+        return $q.reject(res.data);
+      });
+    }
+
+    // Elimina el boleto
+    function delBoleto(boletoId) {
+      console.log('http://localhost:1234/' + '/api/boleto/' + boletoId)
+      return $http({
+        method: 'DELETE',
+        url: 'http://localhost:1234/' + '/api/boleto/' + boletoId,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }

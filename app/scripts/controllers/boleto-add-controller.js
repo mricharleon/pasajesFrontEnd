@@ -35,7 +35,7 @@ angular
       boletoAddVm.boleto.precio_total = precioTotal;
       boletoAddVm.boleto.user_id = 2;
       boletoAddVm.boleto.pasaje_id = boletoAddVm.pasaje.id;
-      boletoService.addBoleto(boletoAddVm.boleto).then(function () {
+      boletoService.addBoleto(boletoAddVm.boleto).then(function (resp) {
         $location.url("/mis-boletos/");
       },
       function error(resp) {

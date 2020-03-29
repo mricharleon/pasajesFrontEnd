@@ -30,7 +30,17 @@ angular
 
     // Guarda el objeto pasaje con los valores editados
     function guardarPasajeEditado() {
-      pasajeService.editPasaje(pasajeEditVm.pasaje).then(function(){
+      // Crea una instancia de pasaje
+      pasajeEditVm.pasajeEditado = {};
+      pasajeEditVm.pasajeEditado.id = pasajeEditVm.pasaje.id;
+      pasajeEditVm.pasajeEditado.salida = pasajeEditVm.pasaje.salida;
+      pasajeEditVm.pasajeEditado.llegada = pasajeEditVm.pasaje.llegada;
+      pasajeEditVm.pasajeEditado.precio = pasajeEditVm.pasaje.precio;
+      pasajeEditVm.pasajeEditado.asientos_disponibles = pasajeEditVm.pasaje.asientos_disponibles;
+      pasajeEditVm.pasajeEditado.origen_id = pasajeEditVm.pasaje.origen.id;
+      pasajeEditVm.pasajeEditado.destino_id = pasajeEditVm.pasaje.destino.id;
+      pasajeEditVm.pasajeEditado.unidad_id = pasajeEditVm.pasaje.unidad.id;
+      pasajeService.editPasaje(pasajeEditVm.pasajeEditado).then(function(){
         $location.url("/list-pasajes/");
       },
       function error(resp) {

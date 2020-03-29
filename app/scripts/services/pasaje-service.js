@@ -64,9 +64,9 @@ angular
     function editPasaje(data) {
       return $http({
         method: 'PUT',
-        url: 'http://localhost:1234/' + '/api/pasaje/edit/' + data.id,
+        url: 'http://localhost:1234/' + '/api/pasaje/' + data.id,
         // headers: {
-        //   'Content-Type': 'application/json;charset=UTF-8'
+        //   'Content-Type': 'application/x-www-form-urlencoded'
         // },
         data: data,
       }).then(function success(res) {

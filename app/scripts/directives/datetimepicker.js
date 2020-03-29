@@ -25,7 +25,7 @@ angular
 
         // Configuracion del datetimepicker
         element.datetimepicker({
-          language: 'ru',
+          locale: 'es',
         });
 
         // Detecta cambios en el input

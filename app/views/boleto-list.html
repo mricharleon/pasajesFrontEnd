@@ -1,7 +1,10 @@
-<h3 class="center-text">Lista de mis boletos</h3>
+<h3 class="center-text">Lista de boletos ({{ boletoListVm.boletos.length }})</h3>
 
 <div class="panel panel-primary col-xs-6 col-sm-6" ng-repeat="boleto in boletoListVm.boletos">
-  <div class="panel-heading">{{ boleto.pasaje.origen.ciudad }} - {{ boleto.pasaje.destino.ciudad }} ({{ boleto.pasaje.unidad.cooperativa.nombre }})</div>
+  <div class="panel-heading">
+    {{ boleto.pasaje.origen.ciudad }} - {{ boleto.pasaje.destino.ciudad }} ({{ boleto.pasaje.unidad.cooperativa.nombre }})
+    <span class="btn btn-danger btn-sm btn-panel-pasajes" ng-click="boletoListVm.eliminarBoleto(boleto.id)">Eliminar</span>
+  </div>
 
   <ul class="list-group">
     <li class="list-group-item"><strong>Salida:</strong> {{ boleto.pasaje.origen.terminal }} - {{ boleto.pasaje.salida | date : "medium" : timezone }}</li>
