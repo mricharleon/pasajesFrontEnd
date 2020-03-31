@@ -13,8 +13,10 @@ angular
 
   function PasajeCtrl($filter,
                       $location,
+                      $rootScope,
                       pasajeService,
-                      sitioService) {
+                      sitioService,
+                      loginService) {
 
     var pasajeVm = this;
     pasajeVm.buscarPasajes = buscarPasajes;
@@ -24,6 +26,7 @@ angular
     // Inicializador
     function init() {
       getSitios();
+      inicializaUsuarioActual();
     }
 
     // Obtiene los objetos sitios
@@ -33,6 +36,10 @@ angular
       });
     }
 
+    // Carga el usuario que este logueado
+    function inicializaUsuarioActual() {
+      $rootScope.usuarioActual = loginService.getUsuarioLogueado();
+    }
 
     // Obtiene los pasajes que concuerden con la fecha, origen y destino
     function buscarPasajes(fecha, origen, destino) {
@@ -46,15 +53,5 @@ angular
     function comprarPasaje(pasaje) {
       $location.url("/crear-boleto/").search({pasajeId: pasaje.id});
     }
-
-
-    // $scope.myDate = '';
-
-    // $scope.$watch('myDate', function(newVal) {
-    //   if (!newVal) {
-    //     return false;
-    //   }
-    //   var date = $filter('date')(new Date(newVal), "yyyy-MM-dd");
-    // });
 
   }

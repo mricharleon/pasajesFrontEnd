@@ -53,7 +53,6 @@ angular
 
     // Elimina el boleto
     function delBoleto(boletoId) {
-      console.log('http://localhost:1234/' + '/api/boleto/' + boletoId)
       return $http({
         method: 'DELETE',
         url: 'http://localhost:1234/' + '/api/boleto/' + boletoId,
