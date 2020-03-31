@@ -11,7 +11,8 @@ angular
   .module('appApp')
   .service('sitioService', sitioService);
 
-  function sitioService($http){
+  function sitioService($http,
+                        $q){
 
     var service = {
       getSitios: getSitios,
@@ -23,11 +24,11 @@ angular
     function getSitios() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:1234/' + '/api/sitios'
-      }).then(function success(res) {
-        return res.data // jshint ignore:line
-      }, function error(res) {
-        return $q.reject(res.data);
+        url: 'http://localhost:1234/' + '/api/sitios',
+      }).then(function success(resp) {
+        return resp.data;
+      }, function error(resp) {
+        return $q.reject(resp.data);
       });
     }
 
