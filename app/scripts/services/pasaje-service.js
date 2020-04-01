@@ -11,7 +11,7 @@ angular
   .module('appApp')
   .service('pasajeService', pasajeService);
 
-  function pasajeService($http, $q){
+  function pasajeService($http, $q, APP){
 
     var service = {
       getAllPasajes: getAllPasajes,
@@ -26,7 +26,7 @@ angular
     function getAllPasajes() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:1234/' + '/api/all/pasajes'
+        url: APP.apiHost + '/api/all/pasajes'
       }).then(function success(res) {
         return res.data // jshint ignore:line
       }, function error(res) {
@@ -39,8 +39,9 @@ angular
     function getPasajes(fecha, origen, destino) {
       return $http({
         method: 'GET',
-        url: 'http://localhost:1234/' + '/api/pasajes/' + fecha + '/' + origen + '/' + destino
+        url: APP.apiHost + '/api/pasajes/' + fecha + '/' + origen + '/' + destino,
       }).then(function success(res) {
+        console.log(typeof res.data)
         return res.data // jshint ignore:line
       }, function error(res) {
         return $q.reject(res.data);
@@ -52,7 +53,7 @@ angular
     function getPasaje(pasajeId) {
       return $http({
         method: 'GET',
-        url: 'http://localhost:1234/' + '/api/pasaje/' + pasajeId
+        url: APP.apiHost + '/api/pasaje/' + pasajeId
       }).then(function success(res) {
         return res.data // jshint ignore:line
       }, function error(res) {
@@ -64,7 +65,7 @@ angular
     function editPasaje(data) {
       return $http({
         method: 'PUT',
-        url: 'http://localhost:1234/' + '/api/pasaje/' + data.id,
+        url: APP.apiHost + '/api/pasaje/' + data.id,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
