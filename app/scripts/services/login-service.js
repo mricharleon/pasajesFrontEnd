@@ -9,10 +9,11 @@
  */
 angular
   .module('appApp')
-  .service('loginService', loginService);
+  .factory('loginService', loginService);
 
   function loginService($http,
-                        $q) {
+                        $q,
+                        APP) {
 
     var service = {
       login: login,
@@ -26,9 +27,10 @@ angular
 
     // Login
     function login(login, password) {
+      console.log('sdsd', APP.apiHost + '/api/login')
       return $http({
         method: 'POST',
-        url: 'http://localhost:1234/' + '/api/login',
+        url: APP.apiHost + '/api/login',
         data: JSON.stringify({'login':login, 'password':password}),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

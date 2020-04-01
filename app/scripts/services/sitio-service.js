@@ -12,7 +12,8 @@ angular
   .service('sitioService', sitioService);
 
   function sitioService($http,
-                        $q){
+                        $q,
+                        APP){
 
     var service = {
       getSitios: getSitios,
@@ -24,7 +25,7 @@ angular
     function getSitios() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:1234/' + '/api/sitios',
+        url: APP.apiHost + '/api/sitios',
       }).then(function success(resp) {
         return resp.data;
       }, function error(resp) {
