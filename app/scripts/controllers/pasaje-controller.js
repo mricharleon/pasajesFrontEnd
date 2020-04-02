@@ -40,7 +40,6 @@ angular
       let date = $filter('date')(new Date(fecha), "yyyy-MM-dd");
       pasajeService.getPasajes(date, origen, destino).then(function(results){
         pasajeVm.pasajes = results;
-        $route.reload();
       });
     }
 
