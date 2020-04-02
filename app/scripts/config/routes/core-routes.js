@@ -4,9 +4,7 @@ angular
   .module('appApp.config')
   .config(coreRoutes);
 
-function coreRoutes($routeProvider, $httpProvider) {
-
-    $httpProvider.defaults.withCredentials = true;
+function coreRoutes($routeProvider) {
 
     $routeProvider
       .when('/', {

@@ -30,9 +30,6 @@ angular
         method: 'POST',
         url: APP.apiHost + '/api/login',
         data: JSON.stringify({'login':login, 'password':password}),
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
       }).then(function success(resp) {
         setUsuarioLogueado(resp.data);
         return resp.data;
@@ -57,9 +54,6 @@ angular
       return $http({
         method: 'GET',
         url: 'http://localhost:1234/' + '/api/logout',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
       }).then(function success(resp) {
         deleteUsuarioLogueado();
         return resp.data;

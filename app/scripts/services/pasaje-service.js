@@ -65,9 +65,6 @@ angular
       return $http({
         method: 'PUT',
         url: APP.apiHost + '/api/pasaje/' + data.id,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
         data: data,
       }).then(function success(res) {
         return res.data // jshint ignore:line
