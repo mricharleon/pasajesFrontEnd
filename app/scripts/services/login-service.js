@@ -19,7 +19,6 @@ angular
       login: login,
       logout: logout,
       setUsuarioLogueado: setUsuarioLogueado,
-      getUsuarioLogueado: getUsuarioLogueado,
       deleteUsuarioLogueado: deleteUsuarioLogueado,
     };
 
@@ -27,7 +26,6 @@ angular
 
     // Login
     function login(login, password) {
-      console.log('sdsd', APP.apiHost + '/api/login')
       return $http({
         method: 'POST',
         url: APP.apiHost + '/api/login',
@@ -47,11 +45,6 @@ angular
     // Setea el usuario en localStorage
     function setUsuarioLogueado(usuario) {
       localStorage.setItem('actualUsuario', JSON.stringify(usuario));
-    }
-
-    // extrae el usuario de localStorage
-    function getUsuarioLogueado() {
-      return JSON.parse(localStorage.getItem('actualUsuario'));
     }
 
     // Elimina el usuario en localStorage

@@ -41,10 +41,9 @@ angular
         method: 'GET',
         url: APP.apiHost + '/api/pasajes/' + fecha + '/' + origen + '/' + destino,
       }).then(function success(res) {
-        console.log(typeof res.data)
         return res.data // jshint ignore:line
       }, function error(res) {
-        return $q.reject(res.data);
+        return $q.reject(res);
       });
     }
 

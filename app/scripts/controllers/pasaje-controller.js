@@ -13,7 +13,7 @@ angular
 
   function PasajeCtrl($filter,
                       $location,
-                      $rootScope,
+                      $rootScope, $route,
                       pasajeService,
                       sitioService,
                       loginService) {
@@ -26,7 +26,6 @@ angular
     // Inicializador
     function init() {
       getSitios();
-      inicializaUsuarioActual();
     }
 
     // Obtiene los objetos sitios
@@ -36,16 +35,12 @@ angular
       });
     }
 
-    // Carga el usuario que este logueado
-    function inicializaUsuarioActual() {
-      $rootScope.usuarioActual = loginService.getUsuarioLogueado();
-    }
-
     // Obtiene los pasajes que concuerden con la fecha, origen y destino
     function buscarPasajes(fecha, origen, destino) {
       let date = $filter('date')(new Date(fecha), "yyyy-MM-dd");
       pasajeService.getPasajes(date, origen, destino).then(function(results){
         pasajeVm.pasajes = results;
+        $route.reload();
       });
     }
 

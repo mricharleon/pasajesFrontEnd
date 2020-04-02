@@ -27,6 +27,9 @@ angular
     function get_pasajes() {
       pasajeService.getAllPasajes().then(function(resp){
         pasajeListVm.pasajes = resp;
+      },
+      function error(resp) {
+        console.log(resp);
       });
     }
 
