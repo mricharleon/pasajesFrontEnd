@@ -14,11 +14,23 @@ angular
 function interceptorsService($rootScope, $q, $window){
 
   var service = {
+    request: request,
     response: response,
     responseError: responseError,
   };
 
   return service;
+
+  // Inyecta en header Content-Type a todas las peticiones POST
+  function request(config) {
+
+    if (config.method === 'POST') {
+      config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+    }
+
+    return config;
+  }
+
 
   // Extrae el usuario actual del localstorage
   function response(response) {

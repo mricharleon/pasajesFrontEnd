@@ -41,9 +41,6 @@ angular
         method: 'POST',
         url: APP.apiHost + '/api/boletos',
         data: data,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
       }).then(function success(res) {
         return res.data // jshint ignore:line
       }, function error(res) {
@@ -56,9 +53,6 @@ angular
       return $http({
         method: 'DELETE',
         url: APP.apiHost + '/api/boleto/' + boletoId,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
       }).then(function success(res) {
         return res.data // jshint ignore:line
       }, function error(res) {
