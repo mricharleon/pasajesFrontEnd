@@ -53,10 +53,10 @@ angular
       return $http({
         method: 'DELETE',
         url: APP.apiHost + '/api/boleto/' + boletoId,
-      }).then(function success(res) {
-        return res.data // jshint ignore:line
-      }, function error(res) {
-        return $q.reject(res.data);
+      }).then(function success(resp) {
+        return resp.data // jshint ignore:line
+      }, function error(resp) {
+        return $q.reject(resp.data);
       });
     }
 
