@@ -19,6 +19,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'appApp.config',
+    'oitozero.ngSweetAlert',
   ]);
 
   angular.module('appApp.config', []);

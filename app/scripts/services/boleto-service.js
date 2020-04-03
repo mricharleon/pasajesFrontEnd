@@ -12,7 +12,7 @@ angular
   .service('boletoService', boletoService);
 
 
-  function boletoService($http, $q, APP){
+function boletoService($http, $q, APP){
 
     var service = {
       getBoletos: getBoletos,
@@ -50,12 +50,14 @@ angular
 
     // Elimina el boleto
     function delBoleto(boletoId) {
+
       return $http({
         method: 'DELETE',
         url: APP.apiHost + '/api/boleto/' + boletoId,
       }).then(function success(resp) {
         return resp.data // jshint ignore:line
       }, function error(resp) {
+        // SweetAlert.timed('Error', resp.data.error);
         return $q.reject(resp.data);
       });
     }
