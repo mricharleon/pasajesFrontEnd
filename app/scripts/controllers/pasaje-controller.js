@@ -13,7 +13,7 @@ angular
 
   function PasajeCtrl($filter,
                       $location,
-                      $rootScope,
+                      $rootScope, $route,
                       pasajeService,
                       sitioService,
                       loginService) {
@@ -26,7 +26,6 @@ angular
     // Inicializador
     function init() {
       getSitios();
-      inicializaUsuarioActual();
     }
 
     // Obtiene los objetos sitios
@@ -34,11 +33,6 @@ angular
       sitioService.getSitios().then(function(resp){
         pasajeVm.sitios = resp;
       });
-    }
-
-    // Carga el usuario que este logueado
-    function inicializaUsuarioActual() {
-      $rootScope.usuarioActual = loginService.getUsuarioLogueado();
     }
 
     // Obtiene los pasajes que concuerden con la fecha, origen y destino

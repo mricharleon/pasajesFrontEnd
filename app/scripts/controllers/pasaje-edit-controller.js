@@ -11,12 +11,12 @@ angular
   .module('appApp')
   .controller('PasajeEditCtrl', PasajeEditCtrl);
 
-  function PasajeEditCtrl($filter,
-                          $location,
+  function PasajeEditCtrl($location,
                           $routeParams,
                           pasajeService,
                           sitioService,
-                          unidadService){
+                          unidadService,
+                          SweetAlert){
 
     var pasajeEditVm = this;
     pasajeEditVm.guardarPasajeEditado = guardarPasajeEditado;
@@ -40,11 +40,12 @@ angular
       pasajeEditVm.pasajeEditado.origen_id = pasajeEditVm.pasaje.origen.id;
       pasajeEditVm.pasajeEditado.destino_id = pasajeEditVm.pasaje.destino.id;
       pasajeEditVm.pasajeEditado.unidad_id = pasajeEditVm.pasaje.unidad.id;
-      pasajeService.editPasaje(pasajeEditVm.pasajeEditado).then(function(){
+      pasajeService.editPasaje(pasajeEditVm.pasajeEditado).then(function(resp){
+        SweetAlert.timed("Éxito!", resp.msg, "success", 2500);
         $location.url("/list-pasajes/");
       },
       function error(resp) {
-        console.log(resp);
+        SweetAlert.swal("Ha ocurrido un error!", resp.msg, "error");
       });
     }
 

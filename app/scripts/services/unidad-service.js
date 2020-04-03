@@ -11,7 +11,7 @@ angular
   .module('appApp')
   .service('unidadService', unidadService);
 
-  function unidadService($http){
+  function unidadService($http, $q, APP){
 
     var service = {
       getUnidades: getUnidades,
@@ -23,7 +23,7 @@ angular
     function getUnidades() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:1234/' + '/api/unidades'
+        url: APP.apiHost + '/api/unidades'
       }).then(function success(res) {
         return res.data // jshint ignore:line
       }, function error(res) {

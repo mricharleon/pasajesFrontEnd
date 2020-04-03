@@ -12,7 +12,7 @@ angular
   .service('boletoService', boletoService);
 
 
-  function boletoService($http, $q){
+function boletoService($http, $q, APP){
 
     var service = {
       getBoletos: getBoletos,
@@ -27,7 +27,7 @@ angular
     function getBoletos(usuarioId) {
       return $http({
         method: 'GET',
-        url: 'http://localhost:1234/' + '/api/boletos/' + usuarioId
+        url: APP.apiHost + '/api/boletos/' + usuarioId
       }).then(function success(res) {
         return res.data // jshint ignore:line
       }, function error(res) {
@@ -39,11 +39,8 @@ angular
     function addBoleto(data) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:1234/' + '/api/boletos',
+        url: APP.apiHost + '/api/boletos',
         data: data,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
       }).then(function success(res) {
         return res.data // jshint ignore:line
       }, function error(res) {
@@ -53,16 +50,14 @@ angular
 
     // Elimina el boleto
     function delBoleto(boletoId) {
+
       return $http({
         method: 'DELETE',
-        url: 'http://localhost:1234/' + '/api/boleto/' + boletoId,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }).then(function success(res) {
-        return res.data // jshint ignore:line
-      }, function error(res) {
-        return $q.reject(res.data);
+        url: APP.apiHost + '/api/boleto/' + boletoId,
+      }).then(function success(resp) {
+        return resp.data // jshint ignore:line
+      }, function error(resp) {
+        return $q.reject(resp.data);
       });
     }
 
