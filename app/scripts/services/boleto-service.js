@@ -57,7 +57,6 @@ function boletoService($http, $q, APP){
       }).then(function success(resp) {
         return resp.data // jshint ignore:line
       }, function error(resp) {
-        // SweetAlert.timed('Error', resp.data.error);
         return $q.reject(resp.data);
       });
     }
