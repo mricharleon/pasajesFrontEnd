@@ -12,7 +12,8 @@ angular
   .controller('boletoListCtrl', boletoListCtrl);
 
   function boletoListCtrl($location,
-                          boletoService) {
+                          boletoService,
+                          SweetAlert) {
 
     var boletoListVm = this;
     boletoListVm.eliminarBoleto = eliminarBoleto;
@@ -25,12 +26,23 @@ angular
     }
 
     function eliminarBoleto(boletoId){
-      boletoService.delBoleto(boletoId).then(function (resp) {
-        $location.url("/mis-boletos/");
-      },
-      function error(resp) {
-        console.log(resp);
-      });
+
+      SweetAlert.swal(SweetAlert.eliminar, // eliminar, inicializa la configuracion
+
+        function (isConfirm) {
+          if (isConfirm){
+            boletoService.delBoleto(boletoId).then(function (resp) {
+            SweetAlert.timed("Éxito!", resp.msg, "success", 2500);
+            $location.url("/mis-boletos/");
+          },
+            function error(resp) {
+              SweetAlert.swal("Ha ocurrido un error!", resp.msg, "error");
+            });
+          }
+        }
+
+      );
+
     }
 
   }

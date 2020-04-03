@@ -53,10 +53,10 @@ angular
       return $http({
         method: 'GET',
         url: APP.apiHost + '/api/pasaje/' + pasajeId
-      }).then(function success(res) {
-        return res.data // jshint ignore:line
-      }, function error(res) {
-        return $q.reject(res.data);
+      }).then(function success(resp) {
+        return resp.data // jshint ignore:line
+      }, function error(resp) {
+        return $q.reject(resp.data);
       });
     }
 
@@ -66,10 +66,10 @@ angular
         method: 'PUT',
         url: APP.apiHost + '/api/pasaje/' + data.id,
         data: data,
-      }).then(function success(res) {
-        return res.data // jshint ignore:line
-      }, function error(res) {
-        return $q.reject(res.data);
+      }).then(function success(resp) {
+        return resp.data // jshint ignore:line
+      }, function error(resp) {
+        return $q.reject(resp.data);
       });
     }
 

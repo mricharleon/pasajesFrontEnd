@@ -12,7 +12,7 @@ angular
   .service('boletoService', boletoService);
 
 
-  function boletoService($http, $q, APP){
+function boletoService($http, $q, APP){
 
     var service = {
       getBoletos: getBoletos,
@@ -50,6 +50,7 @@ angular
 
     // Elimina el boleto
     function delBoleto(boletoId) {
+
       return $http({
         method: 'DELETE',
         url: APP.apiHost + '/api/boleto/' + boletoId,
