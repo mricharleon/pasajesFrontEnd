@@ -11,7 +11,7 @@ angular
   .module('appApp')
   .factory('interceptorsService', interceptorsService);
 
-function interceptorsService($rootScope, $q, $window){
+function interceptorsService($rootScope, $q, $window, SweetAlert){
 
   var service = {
     request: request,
