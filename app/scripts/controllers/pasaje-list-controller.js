@@ -12,7 +12,8 @@ angular
   .controller('PasajeListCtrl', PasajeListCtrl);
 
   function PasajeListCtrl($location,
-                          pasajeService){
+                          pasajeService,
+                          SweetAlert){
 
     var pasajeListVm = this;
     pasajeListVm.editarPasaje = editarPasaje;
@@ -28,9 +29,9 @@ angular
       pasajeService.getAllPasajes().then(function(resp){
         pasajeListVm.pasajes = resp;
       },
-      function error(resp) {
-        console.log(resp);
-      });
+        function error(resp) {
+          SweetAlert.swal("Ha ocurrido un error!", resp.msg, "error");
+        });
     }
 
     // Redirecciona al formulario para editar el pasaje
