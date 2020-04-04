@@ -14,7 +14,8 @@ angular
   function BoletoAddCtrl($routeParams,
                          $location,
                          pasajeService,
-                         boletoService) {
+                         boletoService,
+                         SweetAlert) {
 
     var boletoAddVm = this;
     boletoAddVm.crearBoleto = crearBoleto;
@@ -36,10 +37,11 @@ angular
       boletoAddVm.boleto.user_id = 2;
       boletoAddVm.boleto.pasaje_id = boletoAddVm.pasaje.id;
       boletoService.addBoleto(boletoAddVm.boleto).then(function (resp) {
+        SweetAlert.timed("Éxito!", resp.msg, "success", 2500);
         $location.url("/mis-boletos/");
       },
       function error(resp) {
-        console.log(resp);
+        SweetAlert.swal("Ha ocurrido un error!", resp.msg, "error");
       });
     }
 
