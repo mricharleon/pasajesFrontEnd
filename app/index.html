@@ -37,40 +37,42 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
+
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav" ng-if="usuarioActual">
-            <li class="active"><a href="#!/inicio">Comprar boletos<span class="sr-only">(current)</span></a></li>
-            <li><a href="#!/list-pasajes" ng-if="usuarioActual.role == 'editor'">Mis Pasajes</a></li>
-            <li><a href="#!/mis-boletos">Boletos comprados</a></li>
+          <ul class="nav navbar-nav" ng-if="usuarioActual" ng-repeat="m in menu">
+            <li class="dropdown">
+              <a ng-href="{{ m.url }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">{{ m.nombre }}<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li ng-repeat="item in m.item">
+                  <a ng-href="{{ item.url }}">{{ item.nombre }}</a>
+                </li>
+              </ul>
+            </li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right" ng-if="usuarioActual">
             <li class="dropdown">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ usuarioActual.name }}<span class="caret"></span></a>
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">{{ usuarioActual.name }}<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="">Perfil</a></li>
-                <li><a href="#!/inicio">Comprar boletos</a></li>
-                <li><a href="#!/mis-boletos">Mis boletos</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#!/logout">Cerrar sesión</a></li>
               </ul>
             </li>
           </ul>
-        </div><!-- /.navbar-collapse -->
+        </div>
+
       </div><!-- /.container-fluid -->
     </nav>
 
 
     <div class="col-sm-12 body-personalizado">
-      <div ng-view=""></div>
-    </div>
-
-    <!-- <div class="footer">
-      <div class="container">
-        <a href=""> <span class="glyphicon glyphicon-cloud"></span> mricharleon's Github</a>
+      <div ng-view="">
+        {{ menu }}
       </div>
-    </div> -->
-
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -99,6 +101,7 @@
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
     <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="bower_components/ngSweetAlert/SweetAlert.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -120,6 +123,7 @@
         <script src="scripts/services/boleto-service.js"></script>
         <script src="scripts/services/pasaje-service.js"></script>
         <script src="scripts/services/sitio-service.js"></script>
+        <script src="scripts/services/menu-service.js"></script>
         <script src="scripts/services/unidad-service.js"></script>
         <script src="scripts/services/interceptors-service.js"></script>
         <script src="scripts/services/ngSweetAlert.js"></script>

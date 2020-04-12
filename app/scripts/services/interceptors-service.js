@@ -33,11 +33,11 @@ function interceptorsService($rootScope,
     return config;
   }
 
-
-  // Extrae el usuario actual del localstorage
+  // Extrae el usuario y menu actual del localstorage
   function response(response) {
 
     $rootScope.usuarioActual = JSON.parse(localStorage.getItem('actualUsuario'));
+    $rootScope.menu = JSON.parse(localStorage.getItem('menu'));
 
     if (response.status === 200 && !$rootScope.usuarioActual ) {
       $window.location.href = '#!/';

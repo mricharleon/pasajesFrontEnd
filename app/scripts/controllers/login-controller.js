@@ -14,7 +14,8 @@ angular
 
 function LoginCtrl($route,
                    loginService,
-                   $location) {
+                   $location,
+                   SweetAlert) {
 
     var loginVm = this;
     loginVm.login = login;
@@ -24,9 +25,9 @@ function LoginCtrl($route,
       loginService.login(loginVm.usuario, loginVm.password).then(function(resp){
         $route.reload();
         $location.url("/inicio/");
-      }),
+      },
       function error(resp) {
-        console.log(resp);
-      };
+        SweetAlert.swal("Ha ocurrido un error!", resp, "error");
+      });
     }
   }
