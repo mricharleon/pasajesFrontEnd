@@ -13,10 +13,10 @@ angular
 
   function PasajeCtrl($filter,
                       $location,
-                      $rootScope, $route,
+                      $route, $rootScope,
                       pasajeService,
                       sitioService,
-                      loginService) {
+                      menuService) {
 
     var pasajeVm = this;
     pasajeVm.buscarPasajes = buscarPasajes;
@@ -26,6 +26,14 @@ angular
     // Inicializador
     function init() {
       getSitios();
+      getMenu();
+    }
+
+    // Obtiene el menu del usuario logueado
+    function getMenu() {
+      menuService.getMenu().then(function (resp) {
+        $rootScope.menu = resp;
+      });
     }
 
     // Obtiene los objetos sitios

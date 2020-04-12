@@ -40,13 +40,14 @@ angular
     }
 
     // Setea el usuario en localStorage
-    function setUsuarioLogueado(usuario) {
-      localStorage.setItem('actualUsuario', JSON.stringify(usuario));
+    function setUsuarioLogueado(resp) {
+      localStorage.setItem('actualUsuario', JSON.stringify(resp));
     }
 
     // Elimina el usuario en localStorage
     function deleteUsuarioLogueado() {
       localStorage.removeItem('actualUsuario');
+      localStorage.removeItem('menu');
     }
 
     // Logout
