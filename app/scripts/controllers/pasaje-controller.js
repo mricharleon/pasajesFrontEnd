@@ -13,7 +13,7 @@ angular
 
   function PasajeCtrl($filter,
                       $location,
-                      $route, $rootScope,
+                      $rootScope,
                       pasajeService,
                       sitioService,
                       menuService) {
