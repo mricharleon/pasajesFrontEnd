@@ -20,7 +20,7 @@ angular
     init();
 
     function init() {
-      boletoService.getBoletos(2).then(function(results){
+      boletoService.getBoletos().then(function(results){
         boletoListVm.boletos = results;
       });
     }
