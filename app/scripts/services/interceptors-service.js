@@ -13,7 +13,7 @@ angular
 
 function interceptorsService($rootScope,
                              $q,
-                             $window){
+                             $window, SweetAlert){
 
   var service = {
     request: request,
@@ -53,6 +53,12 @@ function interceptorsService($rootScope,
       $window.location.href = '#!/inicio';
     } else if (rejection.status === 401 && !$rootScope.usuarioActual) {
       $window.location.href = '#!/';
+    }
+
+    if (rejection.status === 404) {
+      console.log(rejection.data.msg)
+      SweetAlert.swal("Ha ocurrido un error!", rejection.data.msg, "error");
+      $window.location.href = '#!/inicio';
     }
 
     return $q.reject(rejection);

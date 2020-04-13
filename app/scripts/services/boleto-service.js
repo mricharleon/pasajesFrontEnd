@@ -24,19 +24,22 @@ function boletoService($http, $q, APP){
 
 
     // Obtiene todos los boletos de un usuario
-    function getBoletos(usuarioId) {
+    function getBoletos() {
+
       return $http({
         method: 'GET',
-        url: APP.apiHost + '/api/boletos/' + usuarioId
+        url: APP.apiHost + '/api/get-boletos'
       }).then(function success(res) {
         return res.data // jshint ignore:line
       }, function error(res) {
         return $q.reject(res.data);
       });
+
     }
 
     // Crea el boleto creado por el usuario
     function addBoleto(data) {
+
       return $http({
         method: 'POST',
         url: APP.apiHost + '/api/boletos',
@@ -46,6 +49,7 @@ function boletoService($http, $q, APP){
       }, function error(res) {
         return $q.reject(res.data);
       });
+
     }
 
     // Elimina el boleto
