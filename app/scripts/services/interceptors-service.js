@@ -26,7 +26,7 @@ function interceptorsService($rootScope,
   // Inyecta en header Content-Type a todas las peticiones POST
   function request(config) {
 
-    if (config.method === 'POST') {
+    if (config.method === 'POST' || config.method === 'PUT' ) {
       config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     }
 
@@ -56,7 +56,6 @@ function interceptorsService($rootScope,
     }
 
     if (rejection.status === 404) {
-      console.log(rejection.data.msg)
       SweetAlert.swal("Ha ocurrido un error!", rejection.data.msg, "error");
       $window.location.href = '#!/inicio';
     }
