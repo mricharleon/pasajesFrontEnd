@@ -22,6 +22,16 @@ function coreRoutes($routeProvider) {
       controller: 'PasajeCtrl',
       controllerAs: 'pasajeVm'
     })
+    .when('/edit-pasaje', {
+      templateUrl: 'views/pasaje-edit.html',
+      controller: 'PasajeEditCtrl',
+      controllerAs: 'pasajeEditVm'
+    })
+    .when('/add-pasaje', {
+      templateUrl: 'views/pasaje-add.html',
+      controller: 'PasajeAddCtrl',
+      controllerAs: 'pasajeAddVm'
+    })
     .when('/crear-boleto', {
       templateUrl: 'views/boleto-add.html',
       controller: 'BoletoAddCtrl',
@@ -36,11 +46,6 @@ function coreRoutes($routeProvider) {
       templateUrl: 'views/pasaje-list.html',
       controller: 'PasajeListCtrl',
       controllerAs: 'pasajeListVm'
-    })
-    .when('/edit-pasaje', {
-      templateUrl: 'views/pasaje-edit.html',
-      controller: 'PasajeEditCtrl',
-      controllerAs: 'pasajeEditVm'
     })
     .otherwise({
       redirectTo: '/'
