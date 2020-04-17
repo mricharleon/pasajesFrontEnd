@@ -16,7 +16,8 @@ angular
                       $rootScope,
                       pasajeService,
                       sitioService,
-                      menuService) {
+                      menuService,
+                      SweetAlert) {
 
     var pasajeVm = this;
     pasajeVm.buscarPasajes = buscarPasajes;
@@ -46,8 +47,14 @@ angular
     // Obtiene los pasajes que concuerden con la fecha, origen y destino
     function buscarPasajes(fecha, origen, destino) {
       let date = $filter('date')(new Date(fecha), "yyyy-MM-dd");
-      pasajeService.getPasajes(date, origen, destino).then(function(results){
-        pasajeVm.pasajes = results;
+      pasajeService.getPasajes(date, origen, destino).then(function(resp){
+        pasajeVm.pasajes = resp;
+        if (pasajeVm.pasajes.msg){ // si no se encontraron resultados
+          SweetAlert.timed("Ups!", resp.msg, "info", 2500);
+        }
+      },
+      function error(resp) {
+        SweetAlert.swal("Ha ocurrido un error!", resp.msg, "error");
       });
     }
 

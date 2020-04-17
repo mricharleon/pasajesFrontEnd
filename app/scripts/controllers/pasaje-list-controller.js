@@ -22,6 +22,7 @@ angular
     // Inicializador
     function init() {
       get_pasajes();
+      pasajeListVm.currentDate = new Date();
     }
 
     // Obtiene los objetos sitios
