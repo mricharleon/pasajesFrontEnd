@@ -14,3 +14,11 @@ bower install
 grunt
 grunt serve
 ~~~
+
+## Usuarios
+| Usuario | Contraseña | Grupo | Permisos |
+|---|---|---|---|
+| admin | admin | Administrador |
+| loja | loja | Cooperativa |
+| cariamanga | cariamanga | Cooperativa |
+| cliente | cliente | Cliente |

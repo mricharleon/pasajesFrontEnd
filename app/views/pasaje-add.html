@@ -1,0 +1,135 @@
+<div class="container">
+
+  <div class="jumbotron">
+    <h3>Por favor, ingresa la información</h3>
+
+    <form class="navbar-form navbar-left" name="pasajeForm" ng-submit="pasajeAddVm.guardarPasaje()" novalidate>
+
+      <div class="form-group">
+
+        <div class="row">
+          <div class='col-sm-6'><label for="">Fecha de salida</label>
+              <div class="form-group">
+                  <div class='input-group date' datetimepicker ng-model="pasajeAddVm.pasaje.salida">
+                      <input type='text' class="form-control"  />
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                  </div>
+              </div>
+          </div>
+
+          <div class='col-sm-6'>
+            <div class="form-group"
+                  ng-class="{'form-group has-error has-feedback': pasajeForm.llegada.$touched && pasajeForm.llegada.$invalid}">
+              <label for="llegada">Fecha de llegada</label>
+                <div class='input-group date'
+                     datetimepicker
+                     ng-required="true"
+                     ng-model="pasajeAddVm.pasaje.llegada">
+                    <input type='text'
+                           class="form-control"
+                           id="llegada"
+                           name="llegada"
+                           ng-required="true" >
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+          </div>
+          <span class="spans-has-error"
+                ng-show="pasajeForm.llegada.$error.required && pasajeForm.llegada.$touched">
+            Ingresa la fecha de llegada.
+          </span>
+
+        </div>
+
+        <div class="form-group"
+             ng-class="{'form-group has-error has-feedback': pasajeForm.precio.$touched && pasajeForm.precio.$invalid}">
+          <label for="precio">Precio</label>
+          <input class="form-control select-sitios"
+                 id="precio"
+                 name="precio"
+                 type="number"
+                 ng-required="true"
+                 step="0.01"
+                 ng-model="pasajeAddVm.pasaje.precio">
+          <span class="spans-has-error"
+                ng-show="pasajeForm.precio.$error.required && pasajeForm.precio.$touched">
+            Ingresa el precio del boleto.
+          </span>
+        </div>
+
+        <div class="form-group"
+             ng-class="{'form-group has-error has-feedback': pasajeForm.asientDisp.$touched && pasajeForm.asientDisp.$invalid}">
+          <label for="asientDisp" class="">Asientos disponibles</label>
+          <input type="number"
+                 id="asientDisp"
+                 name="asientDisp"
+                 class="form-control select-sitios"
+                 ng-required="true"
+                 ng-model="pasajeAddVm.pasaje.asientos_disponibles">
+          <span class="spans-has-error"
+                ng-show="pasajeForm.asientDisp.$error.required && pasajeForm.asientDisp.$touched">
+            Ingresa el numero de asientos disponibles.
+          </span>
+        </div>
+
+        <div class="form-group"
+             ng-class="{'form-group has-error has-feedback': pasajeForm.origen.$touched && pasajeForm.origen.$invalid}">
+          <label for="origen">Selecciona la ciudad de origen</label>
+          <select class="form-control select-sitios"
+                  id="origen"
+                  name="origen"
+                  ng-model="pasajeAddVm.pasaje.origen"
+                  ng-options="sitio.ciudad for sitio in pasajeAddVm.sitios track by sitio.id"
+                  required>
+          </select>
+          <span class="spans-has-error"
+                ng-show="pasajeForm.origen.$error.required && pasajeForm.origen.$touched">
+            Selecciona la ciudad de origen.
+          </span>
+        </div>
+
+        <div class="form-group"
+          ng-class="{'form-group has-error has-feedback': pasajeForm.destino.$touched && pasajeForm.destino.$invalid}">
+          <label for="origen">Selecciona la ciudad de destino</label>
+          <select class="form-control select-sitios"
+                  id="destino"
+                  name="destino"
+                  ng-model="pasajeAddVm.pasaje.destino"
+                  ng-options="sitio.ciudad for sitio in pasajeAddVm.sitios track by sitio.id"
+                  required>
+          </select>
+          <span class="spans-has-error"
+                ng-show="pasajeForm.destino.$error.required && pasajeForm.destino.$touched">
+            Selecciona la ciudad de destino.
+          </span>
+        </div>
+
+        <div class="form-group"
+          ng-class="{'form-group has-error has-feedback': pasajeForm.unidad.$touched && pasajeForm.unidad.$invalid}">
+          <label for="unidad">Selecciona la unidad</label>
+          <select class="form-control select-sitios"
+                  id="unidad"
+                  name="unidad"
+                  ng-model="pasajeAddVm.pasaje.unidad"
+                  ng-options="(unidad.cooperativa.nombre + ' (Bus #' + unidad.numero_unidad + ' - ' + unidad.clase.nombre + ' - ' + unidad.numero_asientos + ' Asientos)' ) for unidad in pasajeAddVm.unidades track by unidad.id"
+                  required>
+          </select>
+          <span class="spans-has-error"
+                ng-show="pasajeForm.unidad.$error.required && pasajeForm.unidad.$touched">
+            Selecciona la unidad.
+          </span>
+        </div>
+
+        <button type="submit"
+                ng-disabled="pasajeForm.$invalid"
+                class="btn-sitio btn btn-primary btn-lg">
+          Guardar Pasaje
+        </button>
+      </div>
+    </form>
+
+  </div>

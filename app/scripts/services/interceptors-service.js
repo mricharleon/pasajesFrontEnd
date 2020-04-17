@@ -13,12 +13,13 @@ angular
 
 function interceptorsService($rootScope,
                              $q,
-                             $window){
+                             $window, SweetAlert){
 
   var service = {
     request: request,
     response: response,
     responseError: responseError,
+    deleteUsuarioLogueado: deleteUsuarioLogueado,
   };
 
   return service;
@@ -26,18 +27,18 @@ function interceptorsService($rootScope,
   // Inyecta en header Content-Type a todas las peticiones POST
   function request(config) {
 
-    if (config.method === 'POST') {
+    if (config.method === 'POST' || config.method === 'PUT' ) {
       config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     }
 
     return config;
   }
 
-
-  // Extrae el usuario actual del localstorage
+  // Extrae el usuario y menu actual del localstorage
   function response(response) {
 
     $rootScope.usuarioActual = JSON.parse(localStorage.getItem('actualUsuario'));
+    $rootScope.menu = JSON.parse(localStorage.getItem('menu'));
 
     if (response.status === 200 && !$rootScope.usuarioActual ) {
       $window.location.href = '#!/';
@@ -55,8 +56,28 @@ function interceptorsService($rootScope,
       $window.location.href = '#!/';
     }
 
+    if (rejection.status === 404) {
+      SweetAlert.swal("Ha ocurrido algo!", rejection.data.msg, "error");
+      $window.location.href = '#!/inicio';
+    }
+
+    if (rejection.status === 500) {
+      console.log(rejection)
+      SweetAlert.swal("Ha ocurrido algo!",
+                      rejection.data.msg ? rejection.data.msg : "Tu sesión ha caducado! \nInicia sesión nuevamente!",
+                      "error");
+      deleteUsuarioLogueado();
+      $window.location.href = '#!/';
+    }
+
     return $q.reject(rejection);
 
+  }
+
+  // Elimina el usuario en localStorage
+  function deleteUsuarioLogueado() {
+    localStorage.removeItem('actualUsuario');
+    localStorage.removeItem('menu');
   }
 
 }
