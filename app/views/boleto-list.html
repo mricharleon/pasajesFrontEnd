@@ -1,14 +1,15 @@
 <h3 class="center-text">Lista de boletos ({{ boletoListVm.boletos.length }})</h3>
 
-<div class="panel panel-primary col-xs-6 col-sm-6" ng-repeat="boleto in boletoListVm.boletos">
+<div class="panel panel-primary col-xs-6 col-sm-6" ng-repeat="boleto in boletoListVm.boletos | orderBy:'-pasaje.salida'">
   <div class="panel-heading">
+    <strong class="strong-danger" ng-if="boleto.pasaje.llegada < (boletoListVm.currentDate | date:'yyyy-MM-ddTHH:mm')">FINALIZADO! </strong>
     {{ boleto.pasaje.origen.ciudad }} - {{ boleto.pasaje.destino.ciudad }} ({{ boleto.pasaje.unidad.cooperativa.nombre }})
     <span class="btn btn-danger btn-sm btn-panel-pasajes" ng-click="boletoListVm.eliminarBoleto(boleto.id)">Eliminar</span>
   </div>
 
   <ul class="list-group">
-    <li class="list-group-item"><strong>Salida:</strong> {{ boleto.pasaje.origen.terminal }} - {{ boleto.pasaje.salida | date : "medium" : timezone }}</li>
-    <li class="list-group-item"><strong>Llegada:</strong> {{ boleto.pasaje.destino.terminal }} - {{ boleto.pasaje.llegada | date : "medium" : timezone }}</li>
+    <li class="list-group-item"><strong>Salida:</strong> {{ boleto.pasaje.salida | date : "medium" : timezone }} - {{ boleto.pasaje.origen.terminal }}</li>
+    <li class="list-group-item"><strong>Llegada:</strong> {{ boleto.pasaje.llegada | date : "medium" : timezone }} - {{ boleto.pasaje.destino.terminal }}</li>
     <li class="list-group-item"><strong>Precio:</strong> ${{ boleto.precio_total }} - ({{ boleto.numero_asientos }} Asientos)</li>
   </ul>
 </div>

@@ -1,8 +1,11 @@
 <h3 class="center-text">Lista de pasajes</h3>
 
-<div class="panel panel-primary col-xs-6 col-sm-6" ng-repeat="pasaje in pasajeListVm.pasajes">
+<div class="panel panel-primary col-xs-6 col-sm-6" ng-repeat="pasaje in pasajeListVm.pasajes | orderBy:'-salida'">
   <div class="panel-heading">
-    {{ pasaje.origen.ciudad }} - {{ pasaje.destino.ciudad }} ({{ pasaje.unidad.cooperativa.nombre }})
+    <strong class="strong-danger" ng-if="pasaje.llegada < (pasajeListVm.currentDate | date:'yyyy-MM-ddTHH:mm')">FINALIZADO!</strong>
+    <span>
+      {{ pasaje.origen.ciudad }} - {{ pasaje.destino.ciudad }} ({{ pasaje.unidad.cooperativa.nombre }})
+    </span>
     <span class="btn btn-danger btn-sm btn-panel-pasajes">Eliminar</span>
     <span class="btn btn-default btn-sm btn-panel-pasajes" ng-click="pasajeListVm.editarPasaje(pasaje.id)">Editar</span>
   </div>

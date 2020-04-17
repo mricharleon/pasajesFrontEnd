@@ -103,6 +103,9 @@ input[type="time"].form-control{
   color: #a94442;
 }
 
+.strong-danger{
+  color: coral;
+}
 
 
 

@@ -19,6 +19,7 @@ function interceptorsService($rootScope,
     request: request,
     response: response,
     responseError: responseError,
+    deleteUsuarioLogueado: deleteUsuarioLogueado,
   };
 
   return service;
@@ -56,12 +57,27 @@ function interceptorsService($rootScope,
     }
 
     if (rejection.status === 404) {
-      SweetAlert.swal("Ha ocurrido un error!", rejection.data.msg, "error");
+      SweetAlert.swal("Ha ocurrido algo!", rejection.data.msg, "error");
       $window.location.href = '#!/inicio';
+    }
+
+    if (rejection.status === 500) {
+      console.log(rejection)
+      SweetAlert.swal("Ha ocurrido algo!",
+                      rejection.data.msg ? rejection.data.msg : "Tu sesión ha caducado! \nInicia sesión nuevamente!",
+                      "error");
+      deleteUsuarioLogueado();
+      $window.location.href = '#!/';
     }
 
     return $q.reject(rejection);
 
+  }
+
+  // Elimina el usuario en localStorage
+  function deleteUsuarioLogueado() {
+    localStorage.removeItem('actualUsuario');
+    localStorage.removeItem('menu');
   }
 
 }

@@ -23,6 +23,7 @@ angular
       boletoService.getBoletos().then(function(results){
         boletoListVm.boletos = results;
       });
+      boletoListVm.currentDate = new Date();
     }
 
     function eliminarBoleto(boletoId){

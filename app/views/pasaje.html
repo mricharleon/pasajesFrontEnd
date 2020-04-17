@@ -10,7 +10,7 @@
           <select class="form-control select-sitios" name="repeatSelectOrigen" id="repeatSelectOrigen" ng-model="ciudadOrigen.model" required>
             <option ng-repeat="sitio in pasajeVm.sitios" value="{{sitio.id}}">{{sitio.ciudad}}</option>
           </select>
-          <span class="spans-has-error" ng-show="pasajeForm.repeatSelectOrigen.$error.required">Ingresa la ciudad de origen.</span>
+          <span class="spans-has-error" ng-show="pasajeForm.repeatSelectOrigen.$error.required && pasajeForm.repeatSelectOrigen.$touched">Ingresa la ciudad de origen.</span>
         </div>
 
         <div class="form-group" ng-class="{'form-group has-error has-feedback': pasajeForm.repeatSelectDestino.$touched && pasajeForm.repeatSelectDestino.$invalid}">
@@ -18,13 +18,13 @@
           <select class="form-control select-sitios" name="repeatSelectDestino" id="repeatSelectDestino" ng-model="ciudadDestino.model" required>
             <option ng-repeat="sitio in pasajeVm.sitios" value="{{sitio.id}}">{{sitio.ciudad}}</option>
           </select>
-          <span class="spans-has-error" ng-show="pasajeForm.repeatSelectDestino.$error.required">Ingresa la ciudad de destino.</span>
+          <span class="spans-has-error" ng-show="pasajeForm.repeatSelectDestino.$error.required && pasajeForm.repeatSelectDestino.$touched">Ingresa la ciudad de destino.</span>
         </div>
 
         <div class="form-group" ng-class="{'form-group has-error has-feedback': pasajeForm.fecha.$touched && pasajeForm.fecha.$invalid}">
           <label for="fecha">Selecciona la fecha de viaje</label>
             <input type="date" class="form-control select-sitios" id="fecha" name="fecha" ng-model="myDate" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
-            <span class="spans-has-error" ng-show="pasajeForm.fecha.$error.required">Ingresa la fecha de búsqueda.</span>
+            <span class="spans-has-error" ng-show="pasajeForm.fecha.$error.required && pasajeForm.fecha.$touched">Ingresa la fecha de búsqueda.</span>
         </div>
 
         <button ng-disabled="pasajeForm.$invalid" ng-click="pasajeVm.buscarPasajes(myDate, ciudadOrigen.model, ciudadDestino.model)" type="submit" class="btn-sitio btn btn-primary btn-lg">Buscar Pasajes!</button>
