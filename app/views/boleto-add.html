@@ -1,9 +1,11 @@
 <div class="container">
 
   <div class="jumbotron">
-    <h3  ng-if="boletoAddVm.pasaje.asientos_disponibles">Por favor, completa tu compra de boletos</h3>
-    <h3  ng-if="!boletoAddVm.pasaje.asientos_disponibles">Boletos agotados en esta ruta!</h3>
-
+    <div class="titulo-jumbotron">
+      <h3  ng-if="boletoAddVm.pasaje.asientos_disponibles">Por favor, completa tu compra de boletos</h3>
+      <h3  ng-if="!boletoAddVm.pasaje.asientos_disponibles">Boletos agotados en esta ruta!</h3>
+    </div>
+    <span class="subtitulo-jumbotron">Sistema de gestión de pasajes!</span>
     <div class="left">
       <h5>
         <strong>Ruta: </strong>

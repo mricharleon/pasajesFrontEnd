@@ -1,0 +1,96 @@
+<div class="container">
+
+  <div class="jumbotron">
+    <div class="titulo-jumbotron">
+      <h3>Listo, creemos una nueva cuenta</h3>
+    </div>
+    <span class="subtitulo-jumbotron">Sistema de gestión de pasajes!</span>
+    <form class="navbar-form navbar-left" name="registroForm" method="post" ng-submit="registroVm.crearCuenta()" novalidate>
+      <div class="form-group">
+
+        <div class="form-group"
+             ng-class="{'form-group has-error has-feedback': registroForm.username.$touched && registroForm.username.$invalid}">
+          <label for="username">Crea tu username</label>
+          <input type="text"
+                 class="form-control select-sitios"
+                 id="username"
+                 name="username"
+                 ng-keyup="registroVm.check_username()"
+                 ng-model="registroVm.username"
+                 ng-required="true">
+          <span class="spans-has-error"
+                ng-show="registroForm.username.$error.required && registroForm.username.$touched">
+            Crea tu username
+          </span>
+          <span ng-class="(registroVm.msgUsername.status !== 'success') ? 'spans-has-error' : 'spans-has-success'"
+            ng-show="!registroForm.username.$error.required">
+            {{ registroVm.msgUsername.msg }}
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group"
+             ng-class="{'form-group has-error has-feedback': registroForm.nombre.$touched && registroForm.nombre.$invalid}">
+          <label for="nombre">Ingresa tu nombre</label>
+          <input type="text"
+                 class="form-control select-sitios"
+                 id="nombre"
+                 name="nombre"
+                 ng-model="registroVm.nombre"
+                 ng-required="true">
+          <span class="spans-has-error"
+                ng-show="registroForm.nombre.$error.required && registroForm.nombre.$touched">
+            Ingresa tu nombre.
+          </span>
+        </div>
+
+        <div class="form-group"
+             ng-class="{'form-group has-error has-feedback': registroForm.apellido.$touched && registroForm.apellido.$invalid}">
+          <label for="apellido">Ingresa tu apellido</label>
+          <input type="text"
+                 class="form-control select-sitios"
+                 id="apellido"
+                 name="apellido"
+                 ng-model="registroVm.apellido"
+                 ng-required="true">
+          <span class="spans-has-error"
+                ng-show="registroForm.apellido.$error.required && registroForm.apellido.$touched">
+            Ingresa tu apellido.
+          </span>
+        </div>
+
+        <div class="form-group"
+             ng-class="{'form-group has-error has-feedback': registroForm.email.$touched && registroForm.email.$invalid}">
+          <label for="email">Ingresa tu email</label>
+          <input type="email"
+                 class="form-control select-sitios"
+                 id="email"
+                 name="email"
+                 ng-keyup="registroVm.check_email()"
+                 ng-model="registroVm.email"
+                 ng-required="true">
+          <span class="spans-has-error"
+                ng-show="(registroForm.email.$error.required || registroForm.email.$invalid) && registroForm.email.$touched">
+            Ingresa tu email.
+          </span>
+          <span ng-class="(registroVm.msgEmail.status !== 'success') ? 'spans-has-error' : 'spans-has-success'"
+                ng-show="!registroForm.email.$invalid">
+            {{ registroVm.msgEmail.msg }}
+          </span>
+        </div>
+        <br>
+        <button ng-disabled="registroForm.$invalid"
+                name="form.submitted"
+                type="submit"
+                class="btn-sitio btn btn-primary btn-lg">
+          Crear cuenta
+        </button>
+        <div class="divider" ng-show="!usuarioActual"></div>
+        <a class="navbar-link crear-cuenta"
+           ng-show="!usuarioActual"
+           ng-href="#!/">Iniciar sesión en <strong>Pasajes!</strong></a>
+      </div>
+    </form>
+  </div>
+
+</div>
