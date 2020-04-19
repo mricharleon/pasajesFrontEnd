@@ -12,6 +12,11 @@ function coreRoutes($routeProvider) {
       controller: 'LoginCtrl',
       controllerAs: 'loginVm'
     })
+    .when('/registro', {
+      templateUrl: 'views/registro.html',
+      controller: 'RegistroCtrl',
+      controllerAs: 'registroVm'
+    })
     .when('/logout', {
       template: null,
       controller: 'LogoutCtrl',

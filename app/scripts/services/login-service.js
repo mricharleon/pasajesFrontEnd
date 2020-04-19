@@ -54,7 +54,7 @@ angular
     function logout() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:1234/' + '/api/logout',
+        url: APP.apiHost + '/api/logout',
       }).then(function success(resp) {
         deleteUsuarioLogueado();
         return resp.data;

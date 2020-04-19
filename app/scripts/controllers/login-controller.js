@@ -30,4 +30,5 @@ function LoginCtrl($route,
         SweetAlert.swal("Ha ocurrido un error!", resp, "error");
       });
     }
+
   }

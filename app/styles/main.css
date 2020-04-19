@@ -7,6 +7,7 @@
 
 body {
   padding: 0;
+  background-image: url("/images/fondo.png");
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -98,13 +99,50 @@ input[type="time"].form-control{
   margin-top: 55px;
 }
 .spans-has-error{
-  float: left;
+  float: right;
   margin-top: -10px;
   color: #a94442;
 }
-
+.spans-has-success{
+  float: right;
+  margin-top: -10px;
+  color: #369c36;
+}
 .strong-danger{
   color: coral;
+}
+.crear-cuenta{
+  color: #ad706e;
+  display: block;
+  padding-top: 25px;
+}
+.crear-cuenta:hover{
+  color: #a94442;
+}
+.titulo-jumbotron{
+  background-color: #e26a6a;
+  box-shadow: 0 1px 2px #676767;
+  padding: 0;
+  margin-left: -75px;
+  color: white;
+  margin-right: -75px;
+  border-radius: 4px;
+}
+.titulo-jumbotron > h3{
+  margin: 15px;
+}
+.subtitulo-jumbotron{
+  color: #969696;
+  margin: 6px 0px;
+}
+.jumbotron label{
+  color: #5f5f5f;
+  font-weight: 300;
+  float: center;
+}
+.divider{
+  border-bottom: 1px solid #dad7d7;
+  margin: 25px 0px -9px 0px;
 }
 
 
@@ -134,6 +172,7 @@ input[type="time"].form-control{
     border-bottom: 0;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-bottom: groove;
   }
 
 
