@@ -16,14 +16,47 @@ angular
                            APP) {
 
     var service = {
-      check_generic_username_email: check_generic_username_email,
+      checkGenericUsernameEmail: checkGenericUsernameEmail,
+      crearCuenta: crearCuenta,
+      activar: activar,
     };
 
     return service;
 
 
+    function crearCuenta(data) {
+
+      return $http({
+        method: 'POST',
+        url: APP.apiHost + '/api/usuarios',
+        data: data,
+      }).then(function success(resp) {
+        return resp.data;
+      },
+      function error(resp) {
+        return $q.reject(resp.data);
+      });
+
+    }
+
+
+    function activar(cod_verificacion) {
+
+      return $http({
+        method: 'GET',
+        url: APP.apiHost + '/api/check-cod-verificacion/' + cod_verificacion
+      }).then(function success(resp) {
+        return resp.data;
+      },
+      function error(resp) {
+        return $q.reject(resp.data);
+      });
+
+    }
+
+
     // Verifica si ya existe un usuario con el mismo username e email
-    function check_generic_username_email(path, check) {
+    function checkGenericUsernameEmail(path, check) {
 
       return $http({
         method: 'GET',

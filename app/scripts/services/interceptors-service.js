@@ -61,7 +61,6 @@ function interceptorsService($rootScope,
     }
 
     if (rejection.status === 500) {
-      console.log(rejection)
       SweetAlert.swal("Ha ocurrido algo!",
                       rejection.data.msg ? rejection.data.msg : "Tu sesión ha caducado! \nInicia sesión nuevamente!",
                       "error");

@@ -23,7 +23,9 @@
         <div>
           <button ng-disabled="loginForm.$invalid" name="form.submitted" type="submit" class="btn-sitio btn btn-primary btn-lg">Iniciar sesión</button>
           <div class="divider"></div>
-          <a class="navbar-link crear-cuenta" ng-href="#!/registro">Obtener una cuenta en <strong>Pasajes!</strong></a>
+          <a class="navbar-link crear-cuenta"
+             ng-href="#!/registro"
+             ng-if="!usuarioActual">Obtener una cuenta en <strong>Pasajes!</strong></a>
         </div>
       </div>
     </form>
