@@ -40,7 +40,7 @@ function interceptorsService($rootScope,
     $rootScope.usuarioActual = JSON.parse(localStorage.getItem('actualUsuario'));
     $rootScope.menu = JSON.parse(localStorage.getItem('menu'));
     if (response.status === 200 && !$rootScope.usuarioActual && !response.config.url.match('views/registro.html') ) {
-      $window.location.href = '#!/';
+      // $window.location.href = '#!/';
     }
 
     return response;

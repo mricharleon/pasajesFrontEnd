@@ -12,11 +12,10 @@ angular
   .controller('PasajeAddCtrl', PasajeAddCtrl);
 
   function PasajeAddCtrl($location,
-                          $routeParams,
-                          pasajeService,
-                          sitioService,
-                          unidadService,
-                          SweetAlert){
+                         pasajeService,
+                         sitioService,
+                         unidadService,
+                         SweetAlert){
 
     var pasajeAddVm = this;
     pasajeAddVm.guardarPasaje = guardarPasaje;

@@ -45,6 +45,15 @@ angular.module('oitozero.ngSweetAlert', [])
           swal(object);
         }, 200);
       },
+      wait: function (title, message) {
+        $timeout(function () {
+          swal({
+            title: title,
+            text: message,
+            showConfirmButton: false,
+          });
+        }, 200);
+      },
       timed: function (title, message, type, time) {
         $timeout(function () {
           swal({
