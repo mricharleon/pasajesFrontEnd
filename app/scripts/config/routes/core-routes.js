@@ -17,6 +17,11 @@ function coreRoutes($routeProvider) {
       controller: 'RegistroCtrl',
       controllerAs: 'registroVm'
     })
+    .when('/activar/:cod_verificacion', {
+      template: null,
+      controller: 'ActivarCtrl',
+      controllerAs: 'activarVm'
+    })
     .when('/logout', {
       template: null,
       controller: 'LogoutCtrl',

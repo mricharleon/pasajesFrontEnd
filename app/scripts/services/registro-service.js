@@ -18,6 +18,7 @@ angular
     var service = {
       checkGenericUsernameEmail: checkGenericUsernameEmail,
       crearCuenta: crearCuenta,
+      activar: activar,
     };
 
     return service;
@@ -31,8 +32,24 @@ angular
         data: data,
       }).then(function success(resp) {
         return resp.data;
-      }, function error(resp) {
+      },
+      function error(resp) {
+        return $q.reject(resp.data);
+      });
+
+    }
+
+
+    function activar(cod_verificacion) {
+
+      return $http({
+        method: 'GET',
+        url: APP.apiHost + '/api/check-cod-verificacion/' + cod_verificacion
+      }).then(function success(resp) {
         return resp.data;
+      },
+      function error(resp) {
+        return $q.reject(resp.data);
       });
 
     }
