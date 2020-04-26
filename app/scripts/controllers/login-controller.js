@@ -27,7 +27,8 @@ function LoginCtrl($route,
         $location.url("/inicio/");
       },
       function error(resp) {
-        SweetAlert.swal("Ha ocurrido un error!", resp, "error");
+        SweetAlert.swal(resp.titulo, resp.msg, "error");
       });
     }
+
   }

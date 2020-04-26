@@ -12,6 +12,16 @@ function coreRoutes($routeProvider) {
       controller: 'LoginCtrl',
       controllerAs: 'loginVm'
     })
+    .when('/registro', {
+      templateUrl: 'views/registro.html',
+      controller: 'RegistroCtrl',
+      controllerAs: 'registroVm'
+    })
+    .when('/activar/:cod_verificacion', {
+      template: null,
+      controller: 'ActivarCtrl',
+      controllerAs: 'activarVm'
+    })
     .when('/logout', {
       template: null,
       controller: 'LogoutCtrl',
@@ -46,6 +56,11 @@ function coreRoutes($routeProvider) {
       templateUrl: 'views/pasaje-list.html',
       controller: 'PasajeListCtrl',
       controllerAs: 'pasajeListVm'
+    })
+    .when('/add-cooperativa', {
+      templateUrl: 'views/cooperativa-add.html',
+      controller: 'CooperativaAddCtrl',
+      controllerAs: 'cooperativaAddVm'
     })
     .otherwise({
       redirectTo: '/'

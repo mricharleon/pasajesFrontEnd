@@ -1,8 +1,10 @@
 <div class="container">
 
   <div class="jumbotron">
-    <h3>Hola, ingresa a tu perfil</h3>
-    <span>Sistema de gestión de pasajes!</span>
+    <div class="titulo-jumbotron">
+      <h3>Hola, ingresa a tu perfil</h3>
+    </div>
+    <span class="subtitulo-jumbotron">Sistema de gestión de pasajes!</span>
     <form class="navbar-form navbar-left" name="loginForm" method="post" ng-submit="loginVm.login()" novalidate>
       <div class="form-group">
 
@@ -18,29 +20,15 @@
           <span class="spans-has-error" ng-show="loginForm.password.$error.required && loginForm.password.$touched">Ingresa tu contraseña.</span>
         </div>
 
-        <button ng-disabled="loginForm.$invalid" name="form.submitted" type="submit" class="btn-sitio btn btn-primary btn-lg">Ingresar</button>
+        <div>
+          <button ng-disabled="loginForm.$invalid" name="form.submitted" type="submit" class="btn-sitio btn btn-primary btn-lg">Iniciar sesión</button>
+          <div class="divider"></div>
+          <a class="navbar-link crear-cuenta"
+             ng-href="#!/registro"
+             ng-if="!usuarioActual">Obtener una cuenta en <strong>Pasajes!</strong></a>
+        </div>
       </div>
     </form>
   </div>
 
-  <table class="table table-hover" ng-if="pasajeVm.pasajes.length">
-    <thead>
-      <tr>
-        <th>Origen</th>
-        <th>Destino</th>
-        <th>cooperativa</th>
-        <th>Precio</th>
-        <th>Asientos Disponibles</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="pasaje in pasajeVm.pasajes" ng-click="pasajeVm.comprarPasaje(pasaje)">
-        <th>{{ pasaje.origen.ciudad }}</th>
-        <th>{{ pasaje.destino.ciudad }}</th>
-        <th>{{ pasaje.unidad.cooperativa.nombre }}</th>
-        <th>{{ pasaje.precio }}</th>
-        <th>{{ pasaje.asientos_disponibles }}</th>
-      </tr>
-    </tbody>
-  </table>
 </div>

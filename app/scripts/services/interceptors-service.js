@@ -39,8 +39,7 @@ function interceptorsService($rootScope,
 
     $rootScope.usuarioActual = JSON.parse(localStorage.getItem('actualUsuario'));
     $rootScope.menu = JSON.parse(localStorage.getItem('menu'));
-
-    if (response.status === 200 && !$rootScope.usuarioActual ) {
+    if (response.status === 200 && !$rootScope.usuarioActual && !response.config.url.match('views/registro.html') ) {
       $window.location.href = '#!/';
     }
 
@@ -62,7 +61,6 @@ function interceptorsService($rootScope,
     }
 
     if (rejection.status === 500) {
-      console.log(rejection)
       SweetAlert.swal("Ha ocurrido algo!",
                       rejection.data.msg ? rejection.data.msg : "Tu sesión ha caducado! \nInicia sesión nuevamente!",
                       "error");
