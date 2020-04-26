@@ -1,0 +1,34 @@
+<div class="container">
+
+  <div class="jumbotron">
+    <div class="titulo-jumbotron">
+      <h3>Vamos a crear una cooperativa</h3>
+    </div>
+    <span class="subtitulo-jumbotron">Sistema de gestión de pasajes!</span>
+    <form class="navbar-form navbar-left" name="cooperativaForm" ng-submit="cooperativaAddVm.crearCooperativa()" novalidate>
+
+        <div class="form-group"
+             ng-class="{'form-group has-error has-feedback': cooperativaForm.nombre.$touched && cooperativaForm.nombre.$invalid}">
+          <label for="nombre">Ingresa el nombre de la cooperativa</label>
+          <input class="form-control select-sitios"
+                 id="nombre"
+                 name="nombre"
+                 type="text"
+                 ng-required="true"
+                 step="0.01"
+                 ng-model="cooperativaAddVm.cooperativa.nombre">
+          <span class="spans-has-error"
+                ng-show="cooperativaForm.nombre.$error.required && cooperativaForm.nombre.$touched">
+            Ingresa el nombre de la cooperativa
+          </span>
+        </div>
+
+        <button type="submit"
+                ng-disabled="cooperativaForm.$invalid"
+                class="btn-sitio btn btn-primary btn-lg">
+          Guardar cooperativa
+        </button>
+      </div>
+    </form>
+
+  </div>
