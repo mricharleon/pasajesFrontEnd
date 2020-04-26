@@ -148,6 +148,10 @@ input[type="time"].form-control{
   border-bottom: 1px solid #dad7d7;
   margin: 25px 0px -9px 0px;
 }
+.active{
+  border-bottom: 3px solid #e26a6a;
+  color: white !important;
+}
 
 
 

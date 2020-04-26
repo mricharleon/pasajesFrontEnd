@@ -41,8 +41,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav" ng-if="usuarioActual" ng-repeat="m in menu | orderBy:'nombre'">
             <li class="dropdown">
-              <a ng-href="{{ m.url }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                aria-expanded="false">{{ m.nombre }} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+              <a ng-href="{{ m.url }}"
+                 class="dropdown-toggle"
+                 data-toggle="dropdown"
+                 role="button"
+                 aria-haspopup="true"
+                 id="{{ m.nombre }}"
+                 name="{{ m.nombre }}"
+                 ng-click="$root.states.activeItem=m.id"
+                 ng-class="{'active': m.id == $root.states.activeItem}"
+                 aria-expanded="false">
+                {{ m.nombre }} <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+              </a>
               <ul class="dropdown-menu">
                 <li ng-repeat="item in m.item | orderBy:'nombre'">
                   <a ng-href="{{ item.url }}">{{ item.nombre }}</a>

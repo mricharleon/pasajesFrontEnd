@@ -34,6 +34,8 @@ angular
     function getMenu() {
       menuService.getMenu().then(function (resp) {
         $rootScope.menu = resp;
+        $rootScope.states = {};
+        $rootScope.states.activeItem = resp[0].id;
       });
     }
 
