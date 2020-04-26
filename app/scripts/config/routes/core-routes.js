@@ -57,6 +57,11 @@ function coreRoutes($routeProvider) {
       controller: 'PasajeListCtrl',
       controllerAs: 'pasajeListVm'
     })
+    .when('/add-cooperativa', {
+      templateUrl: 'views/cooperativa-add.html',
+      controller: 'CooperativaAddCtrl',
+      controllerAs: 'cooperativaAddVm'
+    })
     .otherwise({
       redirectTo: '/'
     });

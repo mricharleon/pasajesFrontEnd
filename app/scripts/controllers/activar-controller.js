@@ -12,7 +12,6 @@ angular
   .controller('ActivarCtrl', ActivarCtrl);
 
 function ActivarCtrl($routeParams,
-                     $rootScope,
                      $route,
                      registroService,
                      loginService,
@@ -22,6 +21,7 @@ function ActivarCtrl($routeParams,
   activar();
 
   function activar() {
+
     let cod_verificacion = $routeParams.cod_verificacion;
     registroService.activar(cod_verificacion).then(function (resp) {
       SweetAlert.timed('Cuenta activada!', '', "success", 2500);
@@ -30,7 +30,7 @@ function ActivarCtrl($routeParams,
       $location.url("/inicio/");
     },
     function error(resp) {
-      SweetAlert.swal(resp.titulo, resp.msg, "error");
+      SweetAlert.error(resp.titulo, resp.msg);
       if ( JSON.parse(localStorage.getItem('actualUsuario')) ){
         $location.url("/inicio/");
       }else{
