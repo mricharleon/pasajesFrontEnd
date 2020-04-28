@@ -20,4 +20,9 @@ grunt serve
 | admin | admin | Administrador |
 | loja | loja | Cooperativa |
 | cariamanga | cariamanga | Cooperativa |
-| cliente | cliente | Cliente |
+| juan | juan | Cliente |
+
+## Deploy
+~~~
+git push herou master -f
+~~~
