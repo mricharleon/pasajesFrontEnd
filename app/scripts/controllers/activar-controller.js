@@ -18,12 +18,13 @@ function ActivarCtrl($routeParams,
                      SweetAlert,
                      $location) {
 
+  var activarVm = this;
   activar();
 
   function activar() {
 
-    let cod_verificacion = $routeParams.cod_verificacion;
-    registroService.activar(cod_verificacion).then(function (resp) {
+    activarVm.cod_verificacion = $routeParams.cod_verificacion;
+    registroService.activar(activarVm.cod_verificacion).then(function (resp) {
       SweetAlert.timed('Cuenta activada!', '', "success", 2500);
       loginService.setUsuarioLogueado(resp);
       $route.reload();

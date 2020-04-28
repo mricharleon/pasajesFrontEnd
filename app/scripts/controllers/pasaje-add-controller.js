@@ -55,6 +55,9 @@ angular
     function inicializaUnidades(){
       unidadService.getUnidades().then(function(resp){
         pasajeAddVm.unidades = resp;
+      },
+      function error(resp) {
+        console.log(resp)
       });
     }
 

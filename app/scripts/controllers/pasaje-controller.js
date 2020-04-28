@@ -48,8 +48,8 @@ angular
 
     // Obtiene los pasajes que concuerden con la fecha, origen y destino
     function buscarPasajes(fecha, origen, destino) {
-      let date = $filter('date')(new Date(fecha), "yyyy-MM-dd");
-      pasajeService.getPasajes(date, origen, destino).then(function(resp){
+      pasajeVm.date = $filter('date')(new Date(fecha), "yyyy-MM-dd");
+      pasajeService.getPasajes(pasajeVm.date, origen, destino).then(function(resp){
         pasajeVm.pasajes = resp;
         if (pasajeVm.pasajes.msg){ // si no se encontraron resultados
           SweetAlert.timed("Ups!", resp.msg, "info", 2500);
